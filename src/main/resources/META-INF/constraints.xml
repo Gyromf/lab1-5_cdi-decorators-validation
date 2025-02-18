@@ -1,0 +1,32 @@
+<constraint-mappings xmlns="http://jboss.org/xml/ns/javax/validation/mapping"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/mapping"
+                     version="1.1">
+    <bean class="Lab4_Validation.Model.XmlValidatedShop" ignore-annotations="false">
+        <field name="name">
+            <constraint annotation="jakarta.validation.constraints.NotNull">
+                <message>Название магазина не должно быть пустым</message>
+            </constraint>
+        </field>
+        <field name="address">
+            <constraint annotation="jakarta.validation.constraints.NotNull">
+                <message>Адрес магазина не должен быть пустым</message>
+            </constraint>
+        </field>
+        <field name="phoneNumber">
+            <constraint annotation="jakarta.validation.constraints.NotNull">
+                <message>Номер телефона магазина не должен быть пустым</message>
+            </constraint>
+            <constraint annotation="jakarta.validation.constraints.Pattern">
+                <message>Номер телефона должен содержать от 10 до 15 цифр и может начинаться с +</message>
+                <element name="regexp">^\+?\d{10,15}$</element>
+            </constraint>
+        </field>
+        <field name="productCount">
+            <constraint annotation="jakarta.validation.constraints.Min">
+                <message>Количество товаров не может быть отрицательным</message>
+                <element name="value">0</element>
+            </constraint>
+        </field>
+    </bean>
+</constraint-mappings>
